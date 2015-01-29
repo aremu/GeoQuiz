@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import android.widget.TextView;
 
@@ -13,8 +14,8 @@ public class QuizActivity extends ActionBarActivity {
 
     private Button mTrueButton;
     private Button mFalseButton;
-    private Button mNextButton;
-    private Button mPreviousButton;
+    private ImageButton mNextButton;
+    private ImageButton mPreviousButton;
     private TextView mQuestionTextView;
 
     private TrueFalse[] mQuestionBank = new TrueFalse[]{
@@ -29,12 +30,12 @@ public class QuizActivity extends ActionBarActivity {
     private int mCurrentIndex = 0;
 
     private void updateQuestion() {
-        int question = mQuestionBank[mCurrentIndex].getmQuestion();
+        int question = mQuestionBank[mCurrentIndex].getQuestion();
         mQuestionTextView.setText(question);
     }
 
     private void checkAnswer(boolean userPressedTrue) {
-        boolean answerIsTrue = mQuestionBank[mCurrentIndex].ismTrueQuestion();
+        boolean answerIsTrue = mQuestionBank[mCurrentIndex].isTrueQuestion();
 
         int messageResId = 0;
         if (userPressedTrue == answerIsTrue) {
@@ -84,7 +85,7 @@ public class QuizActivity extends ActionBarActivity {
         });
 
 
-        mNextButton = (Button) findViewById(R.id.next_button);
+        mNextButton = (ImageButton) findViewById(R.id.next_button);
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,7 +95,7 @@ public class QuizActivity extends ActionBarActivity {
             }
         });
 
-        mPreviousButton = (Button) findViewById(R.id.previous_button);
+        mPreviousButton = (ImageButton) findViewById(R.id.previous_button);
         mPreviousButton.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {

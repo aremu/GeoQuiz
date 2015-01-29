@@ -13,19 +13,19 @@ public class TrueFalse {
         mTrueQuestion = trueQuestion;
     }
 
-    public int getmQuestion() {
+    public int getQuestion() {
         return mQuestion;
     }
 
-    public void setmQuestion(int question) {
+    public void setQuestion(int question) {
         mQuestion = question;
     }
 
-    public boolean ismTrueQuestion() {
+    public boolean isTrueQuestion() {
         return mTrueQuestion;
     }
 
-    public void setmTrueQuestion(boolean trueQuestion) {
+    public void setTrueQuestion(boolean trueQuestion) {
         mTrueQuestion = trueQuestion;
     }
 
