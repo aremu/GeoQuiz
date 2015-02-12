@@ -1,8 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical" >
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center"
+              android:orientation="vertical" >
 
     <TextView
         android:id="@+id/question_text_view"
@@ -40,7 +40,14 @@
             android:layout_height="wrap_content"
             android:text="@string/false_button" />
 
-        </LinearLayout>
+        <Button
+            android:id="@+id/cheat_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cheat_button"/>
+
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -49,11 +56,11 @@
 
 
         <ImageButton
-             android:id="@+id/previous_button"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:src="@drawable/arrow_left"
-             android:contentDescription="@string/previous_button" />
+            android:id="@+id/previous_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_left"
+            android:contentDescription="@string/previous_button" />
 
         <ImageButton
             android:id="@+id/next_button"
@@ -65,4 +72,5 @@
 
     </LinearLayout>
 </LinearLayout>
+
 
