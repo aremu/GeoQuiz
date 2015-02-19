@@ -1,5 +1,6 @@
 package com.example.leodavinci360.geoquiz;
 
+import android.os.Build;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,9 +12,13 @@ import android.widget.Toast;
 import android.widget.TextView;
 import android.util.Log;
 import android.content.Intent;
+import android.annotation.TargetApi;
+import android.app.ActionBar;
 
 
 public class QuizActivity extends ActionBarActivity {
+
+
 
     private static final String TAG = "QuizActivity";
     private static final String KEY_INDEX = "index";
@@ -26,6 +31,8 @@ public class QuizActivity extends ActionBarActivity {
     private ImageButton mNextButton;
     private ImageButton mPreviousButton;
     private TextView mQuestionTextView;
+    private String mAndroidVersion;
+    private TextView mAndroidVersionTextView;
 
 
     private TrueFalse[] mQuestionBank = new TrueFalse[] {
@@ -63,22 +70,33 @@ public class QuizActivity extends ActionBarActivity {
         Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show();
     }
 
-
+    @TargetApi(11)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(TAG, "onCreate(Bundle)");
+        Log.d(TAG, "onCreate() called");
         setContentView(R.layout.activity_quiz);
         if (savedInstanceState != null) {
             mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
             mIsCheater = savedInstanceState.getBoolean(KEY_CHEATER, false);
             mCheatBank = savedInstanceState.getIntArray(KEY_CHEAT_ARRAY);
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            ActionBar actionBar = getActionBar();
+            actionBar.setSubtitle("Bodies of Water");
+        }
+
+
         }
 
 
 
 
         mQuestionTextView = (TextView)findViewById(R.id.question_text_view);
+        mAndroidVersionTextView = (TextView)findViewById(R.id.androidVersion);
+        mAndroidVersion = (getString(R.string.android_version) + " " + Build.VERSION.SDK_INT);
+        mAndroidVersionTextView.setText(mAndroidVersion);
 
 
         mTrueButton = (Button)findViewById(R.id.true_button);
@@ -118,7 +136,8 @@ public class QuizActivity extends ActionBarActivity {
         updateQuestion();
 
         mQuestionTextView = (TextView)findViewById(R.id.question_text_view);
-        mQuestionTextView.setOnClickListener(new View.OnClickListener() {
+        mQuestionTextView.setOnClickListener(new View.OnClickListener()
+        {
 
             @Override
             public void onClick(View arg0) {
@@ -131,7 +150,10 @@ public class QuizActivity extends ActionBarActivity {
             mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);// the current question index # pulled from that saved state
             mIsCheater = savedInstanceState.getBoolean(KEY_CHEATER, false);// the current status of whether the user cheated on this ? is pulled
             mCheatBank = savedInstanceState.getIntArray(KEY_CHEAT_ARRAY);// the current status of the int array that holds cheat/not for each ? pulled
+
         }
+
+
         mCheatButton = (Button)findViewById(R.id.cheat_button);
         mCheatButton.setOnClickListener(new View.OnClickListener() {
 

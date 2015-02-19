@@ -16,6 +16,12 @@
      android:layout_height="wrap_content"
      android:padding="24dp"/>
 
+ <TextView
+     android:id="@+id/androidVersion"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:paddingTop="20dp"/>
+
  <Button
      android:id="@+id/showAnswerButton"
      android:layout_width="wrap_content"

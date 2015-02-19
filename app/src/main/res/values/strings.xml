@@ -20,6 +20,7 @@
     <string name="warning_text">Are you sure you want to do this?</string>
     <string name="show_answer_button">Show Answer</string>
     <string name="judgement_toast">You did not have to cheat</string>
+    <string name="android_version">API Level</string>
 
 
 
