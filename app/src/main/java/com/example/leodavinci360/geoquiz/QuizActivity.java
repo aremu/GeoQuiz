@@ -1,19 +1,19 @@
 package com.example.leodavinci360.geoquiz;
 
+import android.annotation.TargetApi;
+import android.support.v7.app.ActionBar;
+import android.content.Intent;
 import android.os.Build;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
 import android.widget.TextView;
-import android.util.Log;
-import android.content.Intent;
-import android.annotation.TargetApi;
-import android.app.ActionBar;
+import android.widget.Toast;
 
 
 public class QuizActivity extends ActionBarActivity {
@@ -80,18 +80,11 @@ public class QuizActivity extends ActionBarActivity {
             mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
             mIsCheater = savedInstanceState.getBoolean(KEY_CHEATER, false);
             mCheatBank = savedInstanceState.getIntArray(KEY_CHEAT_ARRAY);
-
-
+        }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            ActionBar actionBar = getActionBar();
+            ActionBar actionBar = getSupportActionBar();
             actionBar.setSubtitle("Bodies of Water");
         }
-
-
-        }
-
-
-
 
         mQuestionTextView = (TextView)findViewById(R.id.question_text_view);
         mAndroidVersionTextView = (TextView)findViewById(R.id.androidVersion);
@@ -176,7 +169,7 @@ public class QuizActivity extends ActionBarActivity {
             return;
         }
         // pull the cheat status reported back by CheatActivity
-        mIsCheater = data.getBooleanExtra(CheatActivity.EXTRA_ANSWER_SHOWN, false);
+        //mIsCheater = data.getBooleanExtra(CheatActivity.EXTRA_ANSWER_SHOWN, false);
         if (mIsCheater) {// if they did cheat
             mCheatBank[mCurrentIndex] = 2;// set the current ?'s cheat status to cheated on in the array(2)
         }
